@@ -1,3 +1,4 @@
+/* --- GENERAL RESET --- */
 * {
   margin: 0;
   padding: 0;
@@ -9,11 +10,14 @@ html {
 }
 
 body {
-  font-family: "Inter", sans-serif;
+  font-family: "Montserrat", sans-serif;
   background-color: #0b0b0b;
   color: #ddd;
   line-height: 1.6;
 }
+
+
+/* --- NAV --- */
 
 .navbar {
   position: fixed;
@@ -34,7 +38,7 @@ body {
 }
 
 .nav-logo {
-  color: #b26cff;
+  color: #0f0;
   font-size: 1.5rem;
   font-weight: 700;
   text-decoration: none;
@@ -56,7 +60,7 @@ body {
 }
 
 .nav-link:hover {
-  color: #b26cff;
+  color: #0f0;
 }
 
 .nav-toggle {
@@ -73,9 +77,18 @@ body {
   transition: 0.3s;
 }
 
-.section {
-  padding: 100px 20px;
+#home {
   min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* --- SECTIONS --- */
+
+.section {
+  padding: 60px 20px;
+  min-height: auto;
 }
 
 .container {
@@ -84,27 +97,74 @@ body {
 }
 
 h2 {
-  color: #b26cff;
+  color: #0f0;
   margin-bottom: 1.5rem;
   font-weight: 700;
   font-size: 2rem;
+  font-family: "Montserrat", sans-serif;
 }
 
+/* --- BUTTONS --- */
 .btn {
   display: inline-block;
   padding: 0.8rem 1.8rem;
-  border: 2px solid #b26cff;
-  color: #b26cff;
+  border: 2px solid #0f0;
+  color: #0f0;
   border-radius: 4px;
   text-decoration: none;
   transition: background-color 0.3s, color 0.3s;
 }
 
 .btn:hover {
-  background-color: #b26cff;
+  background-color: #0f0;
   color: #0b0b0b;
 }
 
+/* --- MATRIX ANIMASJON --- */
+.matrix-bg {
+  position: relative;
+  overflow: hidden;
+}
+
+.matrix-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(0, 255, 0, 0.1) 0,
+    rgba(0, 255, 0, 0.2) 2px,
+    transparent 4px
+  );
+  animation: rain 10s linear infinite;
+  z-index: 1; /* bakgrunn */
+}
+
+.matrix-text {
+  position: relative;
+  z-index: 2; /* foran matrix-rain */
+  color: #0f0;
+  font-family: "Montserrat", sans-serif;
+  text-shadow: 0 0 10px#ff7f50, 0 0 20px #ff7f50, 0 0 30px #0f0;
+}
+
+.matrix-text::before {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  animation: glitch 2s infinite;
+  clip-path: polygon(0 0, 100% 0, 100% 45%, 0 45%);
+  transform: translate(-2px, -2px);
+  color: #0f0;
+  text-shadow: 0 0 5px #ff7f50, 0 0 15px #0f0;
+}
+
+/* --- HOME --- */
 .home-section {
   display: flex;
   align-items: center;
@@ -113,9 +173,10 @@ h2 {
 }
 
 .home-content h1 {
-  font-size: 2.5rem;
+  font-size: 2.6rem;
   margin-bottom: 1rem;
   color: #fff;
+  font-family: "Montserrat", sans-serif;
 }
 
 .home-content .btn {
@@ -123,9 +184,12 @@ h2 {
 }
 
 .name-highlight {
-  color: #b26cff;
+  color: #0f0;
+  text-shadow: 0 0 8px #00ff00b3;
+  animation: pulseGlow 1.5s infinite alternate;
 }
 
+/* --- ABOUT --- */
 .about-content {
   display: flex; /* Plasserer elementene på en linje */
   align-items: center; /* Vertikalt sentrerer innholdet */
@@ -149,41 +213,61 @@ h2 {
   margin-bottom: 0;
 }
 
-.about-img img {
-  width: 280px; /* Litt større bilde for bedre balanse */
-  height: 280px; /* Sørger for at bildet er en perfekt sirkel */
-  object-fit: cover; /* Hindrer at bildet strekkes */
-  border-radius: 50%;
-  border: 3px solid #b26cff;
-  transition: transform 0.4s ease;
+.about-text p {
+  margin-bottom: 1.2rem;
+  color: #ececec; /* Litt mykere enn ren hvit, bedre for øynene */
+}
+
+.about-content img {
+  width: 300px;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 12px; /* myk, tech kant */
+  border: 2px solid #0f0;
+  box-shadow: 0 0 18px rgba(0, 255, 128, 0.08);
+  transition: transform 0.3s ease;
+}
+
+.about-content img:hover {
+  transform: scale(1.03);
 }
 
 .about-img img:hover {
   transform: scale(1.1);
 }
 
+/* --- SKILLS --- */
 #experience {
   color: #d1b3ff;
   background-color: #0d0d0d;
   padding: 50px;
-  font-family: Arial, sans-serif;
+  font-family: "Montserrat", sans-serif;
+
 }
 
 h2 {
   font-size: 2em;
   margin-bottom: 20px;
+  font-family: "Montserrat", sans-serif;
+}
+
+.text2 {
+  color: white;
 }
 
 h3 {
   font-size: 1.5em;
   margin-top: 30px;
   margin-bottom: 15px;
+  font-family: "Montserrat", sans-serif;
+  color: #0f0;
 }
 
 .skills-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
   gap: 20px;
+  color: white;
 }
 
 .skill {
@@ -205,6 +289,7 @@ h3 {
   background-color: #393939;
 }
 
+/* --- PROJECTS --- */
 .projects-section {
   text-align: center;
   padding: 4rem 2rem;
@@ -212,16 +297,19 @@ h3 {
 
 .projects-section h2 {
   font-size: 2.5rem;
-  color: #b26cff;
+  color: #0f0;
   margin-bottom: 3rem;
+  font-family: "Montserrat", sans-serif;
 }
 
 .projects-grid {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
+  display: grid; /* Endret til grid */
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(280px, 1fr)
+  ); /* Dette fikser problemet */
   gap: 2.5rem;
-  max-width: 1000px;
+  max-width: 1200px; /* Økt maks bredde for å gi plass til 3+ kort */
   margin: 0 auto;
 }
 
@@ -229,15 +317,19 @@ h3 {
   background-color: #151515;
   border-radius: 16px;
   padding: 2rem 1.5rem;
-  width: 350px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
   transition: all 0.3s ease;
+  /* Sett en min-høyde for å sikre at selv et kort med lite innhold har en viss størrelse */
+  min-height: 400px; /* Juster denne hvis kortene blir for korte */
+  display: flex; /* Legg til flex for å justere innholdet */
+  flex-direction: column;
+  justify-content: space-between; /* Skyver knapper og tags til bunnen */
 }
 
 .project-card:hover {
   background-color: #1d1d1d;
   transform: translateY(-8px) scale(1.03);
-  box-shadow: 0 8px 30px rgba(178, 108, 255, 0.2);
+  box-shadow: 0 8px 30px #0f0;
 }
 
 .project-card img {
@@ -258,11 +350,13 @@ h3 {
   color: #fff;
   margin-bottom: 0.5rem;
   margin-top: 1px;
+  font-family: "Montserrat", sans-serif;
 }
 
 .project-card p {
   color: #ccc;
   font-size: 0.95rem;
+  font-family: "Montserrat", sans-serif;
 }
 
 .tags {
@@ -275,50 +369,203 @@ h3 {
 
 .tags span {
   background-color: #2a2a2a;
-  color: #b26cff;
+  color: #0f0;
   font-size: 0.85rem;
   padding: 0.35rem 0.8rem;
   border-radius: 20px;
   transition: all 0.3s ease;
   cursor: default;
+  font-family: "Montserrat", sans-serif;
 }
 
 .tags span:hover {
-  background-color: #b26cff;
+  background-color: #0f0;
   color: #fff;
   transform: scale(1.05);
 }
 
 .github-btn {
-  display: inline-flex;
+  display: flex;
   align-items: center;
+  justify-content: center;
   gap: 0.5rem;
   margin-top: 1.2rem;
   padding: 0.5rem 1rem;
-  border: 2px solid #b26cff;
-  color: #b26cff;
+  border: 2px solid #0f0;
+  color: #0f0;
   border-radius: 8px;
   font-weight: 500;
   text-decoration: none;
   transition: all 0.3s ease;
+  font-family: "Montserrat", sans-serif;
+  width: 100%;
 }
 
 .github-btn:hover {
-  background-color: #b26cff;
+  background-color: #0f0;
   color: #fff;
   transform: translateY(-2px);
 }
 
-#resume .btn {
-  margin-top: 20px;
-  justify-content: center;
-  align-items: center;
+/* --- TIMELINE CONTAINER --- */
+.timeline {
+  position: relative;
+  max-width: 1000px;
+  margin: 40px auto;
+  padding: 20px 0;
 }
 
-.footer {
+/* Den vertikale linjen */
+.timeline::after {
+  content: '';
+  position: absolute;
+  width: 2px;
+  background: linear-gradient(to bottom, transparent, #0f0, transparent);
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  margin-left: -1px;
+}
+
+/* --- TIMELINE ITEMS --- */
+.timeline-item {
+  padding: 15px 40px;
+  position: relative;
+  background-color: inherit;
+  width: 50%;
+  box-sizing: border-box;
+}
+
+/* Selve "noden" (prikken på linjen) */
+.timeline-item::after {
+  content: '';
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  right: -10px;
+  background-color: #0b0b0b;
+  border: 2px solid #0f0;
+  top: 20px;
+  border-radius: 50%;
+  z-index: 1;
+  box-shadow: 0 0 10px #0f0;
+}
+
+/* Venstre-justerte bokser */
+.timeline-item.left {
+  left: 0;
+}
+
+/* Høyre-justerte bokser */
+.timeline-item.right {
+  left: 50%;
+}
+
+/* Flytt noden for høyre-justerte bokser */
+.timeline-item.right::after {
+  left: -10px;
+}
+
+/* --- INNHOLDET I BOKSENE --- */
+.timeline-content {
+  padding: 25px;
+  background: #151515;
+  position: relative;
+  border-radius: 12px;
+  border: 1px solid rgba(0, 255, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.timeline-content:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0, 255, 0, 0.15);
+  border-color: #0f0;
+}
+
+.timeline-content h3 {
+  color: #0f0;
+  margin-top: 0;
+  font-size: 1.2rem;
+  margin-bottom: 5px;
+}
+
+.timeline-content p {
+  font-size: 0.9rem;
+  color: #ccc;
+  margin-bottom: 8px;
+  line-height: 1.4;
+}
+
+.timeline-content strong {
+  color: #fff;
+  display: block;
+  margin-bottom: 10px;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.date {
+  font-family: 'Courier New', Courier, monospace; /* Gir en "tech"-følelse */
+  color: #0f0;
+  font-size: 0.8rem;
+  font-weight: bold;
+  margin-bottom: 8px;
+  display: inline-block;
+}
+
+/* --- MOBIL-TILPASNING (Viktig!) --- */
+@media screen and (max-width: 768px) {
+  /* Flytt linjen til venstre */
+  .timeline::after {
+    left: 31px;
+  }
+
+  /* Gjør alle boksene full bredde */
+  .timeline-item {
+    width: 100%;
+    padding-left: 70px;
+    padding-right: 20px;
+  }
+
+  /* Sørg for at alle bokser flyter til venstre */
+  .timeline-item.left, 
+  .timeline-item.right {
+    left: 0;
+  }
+
+  /* Flytt alle noder til den nye linje-posisjonen */
+  .timeline-item::after, 
+  .timeline-item.right::after {
+    left: 22px;
+    right: auto;
+  }
+}
+
+/* Fjerner den ubrukte wrapper-klassen */
+.resume-btn-wrapper {
+  display: none;
+}
+
+.resume-footer {
+  display: flex;
+  justify-content: center; /* Sentrerer horisontalt */
+  align-items: center;
+  width: 100%;
+  margin-top: 50px; /* Gir litt luft etter det siste tidslinje-punktet */
+  padding-bottom: 20px;
+}
+
+/* Valgfritt: Juster selve knappen hvis den fortsatt oppfører seg rart */
+.resume-btn {
+  margin: 0 auto; /* Ekstra sikkerhet for sentrering */
+  display: inline-block; 
   text-align: center;
-  padding: 2rem 0;
-  color: #666;
+  width: auto; /* Hindrer at den strekker seg over hele bredden */
+}
+
+#about, #projects, #exprience, #resume {
+  scroll-margin-top: 80px;
 }
 
 /* --- Animations --- */
@@ -362,25 +609,27 @@ h3 {
   }
 }
 
-.typing {
-  overflow: hidden;
-  white-space: nowrap;
-  border-right: 3px solid #b26cff;
-  width: 0;
-  animation: typing 3s steps(30, end) forwards, blink 0.8s step-end infinite;
-}
-
-@keyframes typing {
-  from {
-    width: 0;
+@keyframes rain {
+  0% {
+    transform: translateY(-100%);
   }
-  to {
-    width: 100%;
+  100% {
+    transform: translateY(100%);
   }
 }
 
-@keyframes blink {
-  50% {
-    border-color: transparent;
+@keyframes glitch {
+  0%,
+  100% {
+    clip-path: polygon(0 0, 100% 0, 100% 45%, 0 45%);
+    transform: translate(0);
+  }
+  33% {
+    clip-path: polygon(0 0, 100% 0, 100% 15%, 0 15%);
+    transform: translate(-5px, -5px);
+  }
+  66% {
+    clip-path: polygon(0 85%, 100% 85%, 100% 100%, 0 100%);
+    transform: translate(5px, 5px);
   }
 }
